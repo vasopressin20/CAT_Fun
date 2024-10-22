@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exporting to pdf</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      /* Optional CSS for styling */
+      .mathspowers,
+      .mathspowerscube,
+      .mathstwopower,
+      .mathsthreepower,
+      .mathsfivepower {
+        box-shadow: grey;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        background-image: linear-gradient(
+          to right,
+          rgb(2, 27, 36),
+          rgb(22, 118, 156)
+        );
+        padding-left: 40px;
+        width: 40vw;
+        border-radius: 20px;
+        margin-left: 1rem;
+        margin-bottom: 2rem;
+        border: 2px solid rgb(138, 136, 136);
+        /* border: 1px solid #ccc; */
+        padding: 0px;
+      }
+      table {
+        border-collapse: collapse;
+        border-radius: 20px;
+        font-weight: 500;
+        font-weight: 600;
+        color: rgb(18, 90, 244);
+        background-color: #f8f7f6;
+        width: 30vw;
+        margin: auto;
+        margin-bottom: 2em;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+        margin-left: 2px;
+        margin-bottom: 10px;
+      }
+      button {
+        flex-grow: 0;
+        width: 60px;
+        padding: 2px;
+        margin-top: 10px;
+        background-color: blue;
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+      p {
+        margin-left: 4px;
+      }
+      h3 {
+        margin: 20px;
+        color: #ccc;
+      }
+      body {
+        background-color: #ccc;
+      }
+      .table-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .table-container > table {
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin: 10px; align-content: center">
+      Important Maths foundation for CAT
+    </h1>
+
+    <div class="main">
+      <div class="mathspowers">
+        <h3>squares of all numbers from 1 to 25</h3>
+
+        <button onclick="squarenum()">squares</button>
+        <p id="sq"></p>
+      </div>
+
+      <div class="mathspowerscube">
+        <h3>cubes of all numbers from 1 to 25</h3>
+
+        <button onclick="cubenum()">cubes</button>
+        <p id="cube"></p>
+      </div>
+      <div class="mathstwopower">
+        <h3>powers of two</h3>
+
+        <button onclick="twopowers()">2 powers</button>
+        <p id="power2"></p>
+      </div>
+      <div class="mathsthreepower">
+        <h3>powers of three</h3>
+
+        <button onclick="threepowers()">3 powers</button>
+        <p id="power3"></p>
+      </div>
+      <div class="mathsfivepower">
+        <h3>powers of five</h3>
+
+        <button onclick="fivepowers()">5 powers</button>
+        <p id="power5"></p>
+      </div>
+    </div>
+
+    <div class="mathspowers">
+      <h3>Tables of numbers from 12 to 20</h3>
+      <div id="tables" class="table-container"></div>
+    </div>
+
+    <script>
+      const squarenum = () => {
+        let start = 1;
+        let result = "";
+        for (start; start <= 25; start++) {
+          result += `  <table><tbody>  <tr> <td> squares of ${start} is  ${Math.pow(
+            start,
+            2
+          )} </td> </tr></tbody></table> `;
+        }
+        document.getElementById("sq").innerHTML = result;
+      };
+
+      const cubenum = () => {
+        let start = 1;
+        let result = "";
+        for (start; start <= 25; start++) {
+          result += `  <table><tbody>  <tr> <td> cubes of ${start} is  ${Math.pow(
+            start,
+            3
+          )} </td> </tr></tbody></table> `;
+        }
+        document.getElementById("cube").innerHTML = result;
+      };
+
+      const twopowers = () => {
+        let start = 1;
+        let result = "";
+        for (start; start <= 10; start++) {
+          result += `  <table><tbody>  <tr> <td> powers of 2 is  ${Math.pow(
+            2,
+            start
+          )} </td> </tr></tbody></table> `;
+        }
+        document.getElementById("power2").innerHTML = result;
+      };
+      const threepowers = () => {
+        let start = 1;
+        let result = "";
+        for (start; start <= 6; start++) {
+          result += `  <table><tbody>  <tr> <td> powers of 2 is  ${Math.pow(
+            3,
+            start
+          )} </td> </tr></tbody></table> `;
+        }
+        document.getElementById("power3").innerHTML = result;
+      };
+      const fivepowers = () => {
+        let start = 1;
+        let result = "";
+        for (start; start <= 6; start++) {
+          result += `  <table><tbody>  <tr> <td> powers of 2 is  ${Math.pow(
+            5,
+            start
+          )} </td> </tr></tbody></table> `;
+        }
+        document.getElementById("power5").innerHTML = result;
+      };
+      const generateTables = () => {
+        let result = "";
+        for (let i = 12; i <= 20; i++) {
+          result += `<h3>Table of ${i}</h3><table>`;
+          for (let j = 1; j <= 12; j++) {
+            result += `<tr><td>${i} x ${j} = ${i * j}</td></tr>`;
+          }
+          result += `</table>`;
+        }
+        document.getElementById("tables").innerHTML = result;
+      };
+
+      generateTables();
+    </script>
+  </body>
+</html>
